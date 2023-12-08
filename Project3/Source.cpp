@@ -183,54 +183,6 @@ double Simpsons_Cubature_Formula(double(*f)(double, double), double a, double b,
 	k++;
 	cout << "k= " << k << setw(10) << "n =" << n << setw(10) << "I= " << integral1 << setprecision(10) << endl;
 
-	// вычисление интеграла при n = m = 4
-	n *= 2;
-	m *= 2;
-	hx = (b - a) / (2 * n);
-	hy = (d - c) / (2 * m);
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			double x2 = a + (2 * i) * hx,
-				y2 = c + (2 * j) * hy,
-				x2_1 = x2 + hx,
-				x2_2 = x2_1 + hx,
-				y2_1 = y2 + hy,
-				y2_2 = y2_1 + hy;
-			integral2 += f(x2, y2) + 4 * f(x2_1, y2) + f(x2_2, y2) + 4 * f(x2, y2_1) + 16 * f(x2_1, y2_1);
-			integral2 += 4 * f(x2_2, y2_1) + f(x2, y2_2) + 4 * f(x2_1, y2_2) + f(x2_2, y2_2);
-		}
-	}
-	integral2 *= hx * hy / 9;
-	k++;
-	cout << "k= " << k << setw(10) << "n= " << n << setw(10) << "I= " << integral2 << setprecision(10) << endl;
-	while (abs(integral1 - integral2) > 15 * E)
-	{
-		integral1 = integral2;
-		integral2 = 0;
-		n *= 2;
-		m *= 2;
-		hx = (b - a) / (2 * n);
-		hy = (d - c) / (2 * m);
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = 0; j < m; j++)
-			{
-				double x2 = a + (2 * i) * hx,
-					y2 = c + (2 * j) * hy,
-					x2_1 = x2 + hx,
-					x2_2 = x2_1 + hx,
-					y2_1 = y2 + hy,
-					y2_2 = y2_1 + hy;
-				integral2 += f(x2, y2) + 4 * f(x2_1, y2) + f(x2_2, y2) + 4 * f(x2, y2_1) + 16 * f(x2_1, y2_1);
-				integral2 += 4 * f(x2_2, y2_1) + f(x2, y2_2) + 4 * f(x2_1, y2_2) + f(x2_2, y2_2);
-			}
-		}
-		integral2 *= hx * hy / 9;
-		k++;
-		cout << "k= " << k << setw(10) << "n= " << n << setw(10) << "I= " << integral2 << setprecision(10) << endl;
-	}
 	return integral1;
 }
 
