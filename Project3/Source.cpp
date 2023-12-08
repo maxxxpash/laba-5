@@ -9,7 +9,7 @@ using namespace std;
 
 double trapezoid_formula(double (*f)(double), double a, double b, double E);
 double Simpson_method(double (*f)(double), double a, double b, double E);
-double Simpsons_Cubature_Formula(double f(double, double), double a, double b, double c, double d, double E);
+double Simpsons_Cubature_Formula(double (*f)(double, double), double a, double b, double c, double d);
 
 double integral(double x);
 double integralXY(double x, double y);
@@ -28,7 +28,7 @@ int main()
 	b = 4.0;
 	double c = 1.0;
 	double d = 2.0;
-	integralfx = Simpsons_Cubature_Formula(integralXY, a, b, c, d, 1e-6);
+	integralfx = Simpsons_Cubature_Formula(integralXY, a, b, c, d);
 	system("pause");
 	return 0;
 }
