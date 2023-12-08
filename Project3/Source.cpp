@@ -154,11 +154,14 @@ double Simpson_method(double(*f)(double), double a, double b, double E)
 	}
 	return I_h2;
 }
-double Simpsons_Cubature_Formula(double(*f)(double, double), double a, double b, double c, double d, double E)
+double Simpsons_Cubature_Formula(double(*f)(double, double), double a, double b, double c, double d)
 {
-	double integral1 = 0, integral2 = 0;
-	// вычисление интеграла при n = m = 2
-	int n = 2, m = 2;
+	double integral1 = 0;
+	int n, m;
+	cout << "¬ведите N: ";
+	cin >> n;
+	cout << "¬ведите M: ";
+	cin >> m;
 	double hx = (b - a) / (2 * n),
 		hy = (d - c) / (2 * m);
 	int k = 0;
